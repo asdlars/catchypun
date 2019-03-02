@@ -1,61 +1,118 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="A game of rocks, papers and scissors">
-    <meta name="author" content="Larry Lewinsohn">
-    <meta name="generator" content="Jekyll v3.8.5">
-    <title>CatchyPun</title>
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="A game of rocks, papers and scissors">
+  <meta name="author" content="Larry Lewinsohn">
+  <meta name="generator" content="Jekyll v3.8.5">
+  <title>CatchyPun</title>
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
       }
+    }
+  </style>
+  <!-- Custom styles for this template -->
+  <link href="css/cover.css" rel="stylesheet">
+  <link href="css/catchypunUI.css" rel="stylesheet">
+  <link href="css/catchypun.css" rel="stylesheet">
+</head>
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
-    <!-- Custom styles for this template -->
-    <link href="css/cover.css" rel="stylesheet">
-  </head>
+<body class="text-center">
+  <div class="container-fluid d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="masthead mb-auto">
+      <div class="inner">
+        <h3 class="masthead-brand">CatchyPun</h3>
+        <nav class="nav nav-masthead justify-content-center">
+          <a class="nav-link" href="#">How to play?</a>
+          <a class="nav-link" href="mailto:llewinsohn@gmail.com">Contact</a>
+        </nav>
+      </div>
+    </header>
 
-  <body class="text-center">
-    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-      <header class="masthead mb-auto">
-        <div class="inner">
-          <h3 class="masthead-brand">CatchyPun</h3>
-          <nav class="nav nav-masthead justify-content-center">
-            <a class="nav-link" href="#">How to play?</a>
-            <a class="nav-link" href="mailto:llewinsohn@gmail.com">Contact</a>
-          </nav>
+    <main role="main" class="inner cover">
+      <div class="intro">
+        <h1 class="cover-heading">CatchyPun</h1>
+        <p class="lead">Can you beat the AI?</p>
+        <p class="lead">
+          <a href="#" class="btn btn-lg btn-secondary action-button question-button play-button"><span>Play</span></a>
+        </p>
+        <br>
+      </div>
+      <div class="board">
+        <div class="container">
+          <div class="row">
+            <div class="container col-md-5">
+              <div class="row">
+                <div class="container col-md-1">
+                  <h3>Score</h3>
+                  <div class="player-score score">
+                    <span>0</span>
+                  </div>
+                </div>
+                <div class="container col-md-11">
+                <div class="player-ui">
+                  <h2>Your move</h2>
+                  <span move="rock" class="gui-button player-button rock"></span>
+                  <span move="paper" class="gui-button player-button paper"></span>
+                  <span move="scissors" class="gui-button player-button scissors"></span>
+                </div>
+              </div>
+              </div>
+            </div>
+            <div class="container col-md-2">
+              <div class="row message-board-container">
+                <span class="message-board" style="display:none;"></span>
+              </div>
+              <div class="spinner-container row">
+                <div class="spinner-border text-light spinner" style="display:none;" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+              </div>
+            </div>
+            <div class="container col-md-5">
+              <div class="row">
+                <div class="container col-md-11">
+                  <div id="ai-play">
+                    <h2>AI move</h2>
+                    <span class="gui-button"></span>
+                  </div>
+                </div>
+                <div class="container col-md-1">
+                  <h3>Score</h3>
+                  <div class="ai-score score">
+                    <span>0</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </header>
+      </div>
+    </main>
 
-      <main role="main" class="inner cover">
-        <div class="board">
-          <h1 class="cover-heading">CatchyPun</h1>
-          <p class="lead">Can you beat the AI?</p>
-          <p class="lead">
-            <a href="#" class="btn btn-lg btn-secondary"><span class="action-button question-button">Play</span></a>
-          </p>
-        </div>
-      </main>
+    <footer class="mastfoot mt-auto">
+      <div class="inner">
+        <p>by <a href="https://twitter.com/asdLArs">@asdLArs</a>.</p>
+      </div>
+    </footer>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="/js/game.js"></script>
+</body>
 
-      <footer class="mastfoot mt-auto">
-        <div class="inner">
-          <p>by <a href="https://twitter.com/asdLArs">@asdLArs</a>.</p>
-        </div>
-      </footer>
-    </div>
-  </body>
 </html>

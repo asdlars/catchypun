@@ -1,0 +1,83 @@
+.masthead {
+  margin-bottom: 2rem;
+  max-width: 42em;
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 42em;
+}
+
+/*Spinner*/
+.spinner-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: scale(2);
+}
+
+/*Message board*/
+.message-board-container {
+  display: block;
+  text-align: center;
+}
+.message-board {
+    font-size: 3em;
+}
+
+/*Button styles*/
+.action-button:hover span::after {
+  content: "!";
+}
+
+.question-button span::after {
+  content: "?";
+  width: 10px;
+  display: inline-block;
+}
+
+/*
+ICONS
+Rock by Adrien Coquet from the Noun Project
+Scissors Hand by Till Teenck from the Noun Project
+Hand by Rudy Jaspers from the Noun Project
+*/
+.board {
+  display: none;
+}
+
+.score span {
+  font-size: 4em;
+}
+
+.gui-button {
+  display: inline-block;
+  height: 10em;
+  border: 15px solid grey;
+  border-radius: 100px;
+  background-position: center 0.3em;
+  background-repeat: no-repeat;
+  background-size: 90%;
+  width: 10em;
+  margin: 1em;
+  background-color: whitesmoke;
+  cursor: pointer;
+}
+
+.gui-button:hover {
+  border-color: black;
+}
+
+.gui-button.active {
+  border-color: black;
+}
+
+.rock {
+  background-image: url("/icon/rock.svg");
+}
+
+.paper {
+  background-image: url("/icon/paper.svg");
+}
+
+.scissors {
+  background-image: url("/icon/scissors.svg");
+}

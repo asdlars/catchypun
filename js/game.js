@@ -34,7 +34,7 @@ $(document).on("click", ".gui-button.player-button:not(.disabled)", turn)
 function turn() {
   firstRound = false
   console.clear()
-  $(".message-board, .spinner").fadeIn(100,"linear")
+  $(".message-board, .spinner").stop(true,false).fadeIn(100,"linear")
   $(this).addClass("active");
   $(this).addClass("disabled")
   playerLastMove = $(this).attr("move");
@@ -46,7 +46,7 @@ function turn() {
 }
 
 function resetTurn() {
-  $(".message-board, .spinner").fadeOut(100,"linear", function(){
+  $(".message-board, .spinner").stop(true,false).fadeOut(100,"linear", function(){
     $(".message-board").text("")
     $(".gui-button.player-button.disabled").removeClass("disabled active");
   })

@@ -40,7 +40,7 @@ function turn() {
   playerRounds.push(playerLastMove)
   aiMove();
   scoreRound()
-  setTimeout( resetTurn, 2000);
+  setTimeout( resetTurn, 500);
 }
 
 function resetTurn() {

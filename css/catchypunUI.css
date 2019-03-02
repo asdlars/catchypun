@@ -71,13 +71,13 @@ Hand by Rudy Jaspers from the Noun Project
 }
 
 .rock {
-  background-image: url("icon/rock.svg");
+  background-image: url("../icon/rock.svg");
 }
 
 .paper {
-  background-image: url("icon/paper.svg");
+  background-image: url("../icon/paper.svg");
 }
 
 .scissors {
-  background-image: url("icon/scissors.svg");
+  background-image: url("../icon/scissors.svg");
 }

@@ -2,7 +2,8 @@
 
 
 //variables
-var round = 0
+var roundNumber = 0
+var losingStreak = 0
 var msg = ""
 var playerLastMove = ""
 var aiLastMove = ""
@@ -33,18 +34,19 @@ $(document).on("click", ".gui-button.player-button:not(.disabled)", turn)
 function turn() {
   firstRound = false
   console.clear()
-  $(".message-board, .spinner").fadeIn(500,"linear")
+  $(".message-board, .spinner").fadeIn(100,"linear")
   $(this).addClass("active");
   $(this).addClass("disabled")
   playerLastMove = $(this).attr("move");
   playerRounds.push(playerLastMove)
   aiMove();
   scoreRound()
-  setTimeout( resetTurn, 500);
+  roundNumber++
+  setTimeout( resetTurn, 100);
 }
 
 function resetTurn() {
-  $(".message-board, .spinner").fadeOut(500,"linear", function(){
+  $(".message-board, .spinner").fadeOut(100,"linear", function(){
     $(".message-board").text("")
     $(".gui-button.player-button.disabled").removeClass("disabled active");
   })
@@ -58,23 +60,20 @@ function randomize(sides) {
 }
 
 function think() {
-  if (randomize(10)>1 && !firstRound) {
-    console.log("thinking");
-    aiLastMove = playerRounds[playerRounds.length-1]
-    /*
-    switch (playerLastMove) {
-      case "rock":
-        aiLastMove = "paper"
-        break;
-      case "paper":
-        aiLastMove = "scissors"
-        break;
-      default:
-        aiLastMove = "rock"
-    */
+  randomFactor = randomize(100)
+  console.log("randomFactor :::", randomFactor);
+  console.log("losingStreak",losingStreak);
+  if (randomFactor>5 && roundNumber>2) {
+    console.log("thinking ::: ",playerRounds[playerRounds.length-2]);
+    if (losingStreak >= 2) {
+      aiLastMove = playerRounds[playerRounds.length-3]
+      return aiLastMove;
+    }
+    aiLastMove = playerRounds[playerRounds.length-2]
+    return aiLastMove;
   } else {
-    console.log("random");
     aiLastMove = moves[randomize(3)]
+    console.log("random ::: ", aiLastMove);
   }
   return aiLastMove;
 }
@@ -97,6 +96,7 @@ function scoreRound() {
       case "paperrock":
       case "scissorspaper":
         playerScore++
+        losingStreak++
         msg = messages.playerScores
         break;
       case "paperscissors":
@@ -104,6 +104,7 @@ function scoreRound() {
       case "scissorsrock":
         aiScore++
         msg = messages.aiScores
+        losingStreak = 0
         break;
     }
   }
